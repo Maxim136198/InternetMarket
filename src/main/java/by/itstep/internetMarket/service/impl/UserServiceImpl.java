@@ -1,7 +1,6 @@
 package by.itstep.internetMarket.service.impl;
 
-import by.itstep.internetMarket.dao.DaoFactory;
-import by.itstep.internetMarket.dao.UserDao;
+import by.itstep.internetMarket.dao.UserRepository;
 import by.itstep.internetMarket.entity.User;
 import by.itstep.internetMarket.service.UserService;
 
@@ -9,34 +8,31 @@ import java.util.List;
 
 public class UserServiceImpl implements UserService {
 
-    private UserDao userDao;
+    private UserRepository userRepository;
 
-    public UserServiceImpl () {
-        this.userDao = DaoFactory.getInstance().getUserDao();
-    }
 
     @Override
     public void createUser(User user) {
-
+        userRepository.save(user);
     }
 
     @Override
-    public void deleteUser(int id) {
-
+    public void deleteUser(Long id) {
+        userRepository.deleteById(id);
     }
 
     @Override
     public void updateUser(User user) {
-
+        userRepository.saveAndFlush(user);
     }
 
     @Override
     public List listUsers() {
-        return null;
+        return userRepository.findAll();
     }
 
     @Override
     public User getUser(String name) {
-        return null;
+        return userRepository.findByName(name);
     }
 }

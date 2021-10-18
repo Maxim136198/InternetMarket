@@ -19,6 +19,8 @@
     <maven.compiler.target>1.7</maven.compiler.target>
     <mysql-connector-java>8.0.25</mysql-connector-java>
     <javax.servlet-api>4.0.0</javax.servlet-api>
+    <org.spring.core>5.1.5.RELEASE</org.spring.core>
+    <org.spring.data>2.1.8.RELEASE</org.spring.data>
   </properties>
 
   <dependencies>
@@ -41,6 +43,22 @@
       <groupId>mysql</groupId>
       <artifactId>mysql-connector-java</artifactId>
       <version>${mysql-connector-java}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-core</artifactId>
+      <version>${org.spring.core}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-context</artifactId>
+      <version>${org.spring.core}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.data</groupId>
+      <artifactId>spring-data-jpa</artifactId>
+      <version>${org.spring.data}</version>
     </dependency>
 
     <dependency>
@@ -78,6 +96,11 @@
       <artifactId>h2</artifactId>
       <version>1.4.200</version>
     </dependency>
+      <dependency>
+          <groupId>org.springframework.data</groupId>
+          <artifactId>spring-data-jpa</artifactId>
+          <version>2.1.11.RELEASE</version>
+      </dependency>
 
   </dependencies>
 

@@ -1,6 +1,5 @@
 package by.itstep.internetMarket.service.impl;
 
-import by.itstep.internetMarket.dao.DaoFactory;
 import by.itstep.internetMarket.dao.ProductDao;
 import by.itstep.internetMarket.entity.Product;
 import by.itstep.internetMarket.service.ProductService;
