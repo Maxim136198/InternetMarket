@@ -1,19 +1,16 @@
 package by.itstep.internetMarket.controller.impl;
 
 import by.itstep.internetMarket.controller.OrderController;
-import by.itstep.internetMarket.entity.Order;
+import by.itstep.internetMarket.dao.entity.Order;
 import by.itstep.internetMarket.service.OrderService;
-import by.itstep.internetMarket.service.ServiceFactory;
 
 import java.util.List;
+import java.util.Optional;
 
 public class OrderControllerImpl implements OrderController {
 
     private OrderService orderService;
 
-    public OrderControllerImpl() {
-        this.orderService = ServiceFactory.getInstance().getOrderService();
-    }
 
     @Override
     public void addOrder(Order order) {
@@ -21,7 +18,7 @@ public class OrderControllerImpl implements OrderController {
     }
 
     @Override
-    public void removeOrder(int id) {
+    public void removeOrder(Long id) {
         orderService.removeOrder(id);
     }
 
@@ -36,7 +33,7 @@ public class OrderControllerImpl implements OrderController {
     }
 
     @Override
-    public Order getOrder(int id) {
+    public Optional<Order> getOrder(Long id) {
         return orderService.getOrder(id);
     }
 }

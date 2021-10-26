@@ -1,9 +1,11 @@
-package by.itstep.internetMarket.entity;
+package by.itstep.internetMarket.dao.entity;
 
 
+import javax.management.relation.Role;
 import javax.persistence.*;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "user")
@@ -13,15 +15,15 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @JoinColumn(name = "name")
+    @Column(name = "name")
     private String name;
 
-    @JoinColumn(name = "password")
+    @Column(name = "password")
     private String password;
 
-    @OneToMany
-    @JoinColumn(name = "role_id")
-    private int roleId;
+    @ManyToMany
+    @JoinTable(name = "role_id")
+    private Set<Roles> roleId;
 
     @OneToMany(mappedBy = "order")
     private List<Order> orders;
@@ -54,6 +56,17 @@ public class User {
         return Objects.hash(id, name, password, roleId, orders);
     }
 
+    public User() {
+    }
+
+    public User(int id, String name, String password, Set<Roles> roleId, List<Order> orders) {
+        this.id = id;
+        this.name = name;
+        this.password = password;
+        this.roleId = roleId;
+        this.orders = orders;
+    }
+
     public int getId() {
         return id;
     }
@@ -78,11 +91,11 @@ public class User {
         this.password = password;
     }
 
-    public int getRoleId() {
+    public Set<Roles> getRoleId() {
         return roleId;
     }
 
-    public void setRoleId(int roleId) {
+    public void setRoleId(Set<Roles> roleId) {
         this.roleId = roleId;
     }
 

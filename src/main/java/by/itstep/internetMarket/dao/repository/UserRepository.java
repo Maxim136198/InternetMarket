@@ -1,9 +1,7 @@
-package by.itstep.internetMarket.dao;
+package by.itstep.internetMarket.dao.repository;
 
-import by.itstep.internetMarket.entity.User;
+import by.itstep.internetMarket.dao.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
-
-import java.util.List;
 
 public interface UserRepository extends JpaRepository<User, Long> {
     User findByName(String name);

@@ -1,6 +1,6 @@
 package by.itstep.internetMarket.service;
 
-import by.itstep.internetMarket.entity.Order;
+import by.itstep.internetMarket.dao.entity.Order;
 
 import java.util.List;
 import java.util.Optional;

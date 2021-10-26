@@ -1,8 +1,7 @@
 package by.itstep.internetMarket.service;
 
-import by.itstep.internetMarket.entity.User;
+import by.itstep.internetMarket.dao.entity.User;
 
-import javax.management.relation.Role;
 import java.util.List;
 
 public interface UserService {

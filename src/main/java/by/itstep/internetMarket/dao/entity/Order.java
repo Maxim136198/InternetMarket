@@ -1,4 +1,4 @@
-package by.itstep.internetMarket.entity;
+package by.itstep.internetMarket.dao.entity;
 
 
 import javax.persistence.*;
@@ -16,12 +16,12 @@ public class Order {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private int userId;
+    private User userId;
 
-    @JoinColumn(name = "date", nullable = false)
+    @Column(name = "date", nullable = false)
     private LocalDateTime dateOfPurchases;
 
-    @JoinColumn(name = "price")
+    @Column(name = "price")
     private Double purchasePrice;
 
     //=========================
@@ -64,11 +64,11 @@ public class Order {
         this.id = id;
     }
 
-    public int getUserId() {
+    public User getUserId() {
         return userId;
     }
 
-    public void setUserId(int userId) {
+    public void setUserId(User userId) {
         this.userId = userId;
     }
 

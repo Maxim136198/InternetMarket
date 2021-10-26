@@ -1,6 +1,6 @@
 package by.itstep.internetMarket.controller;
 
-import by.itstep.internetMarket.entity.User;
+import by.itstep.internetMarket.dao.entity.User;
 
 import java.util.List;
 
@@ -8,7 +8,7 @@ public interface UserController {
 
     void addUser(User user);
 
-    void removeUser(int id);
+    void removeUser(Long id);
 
     void updateUser(User user);
 

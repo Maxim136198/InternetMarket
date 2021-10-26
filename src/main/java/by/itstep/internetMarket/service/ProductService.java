@@ -1,6 +1,6 @@
 package by.itstep.internetMarket.service;
 
-import by.itstep.internetMarket.entity.Product;
+import by.itstep.internetMarket.dao.entity.Product;
 
 import java.util.List;
 
@@ -8,7 +8,7 @@ public interface ProductService {
 
     void addProduct(Product product);
 
-    void removeProduct(int id);
+    void removeProduct(Long id);
 
     void updateProduct(Product product);
 

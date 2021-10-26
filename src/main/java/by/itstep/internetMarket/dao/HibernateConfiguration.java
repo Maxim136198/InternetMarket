@@ -1,6 +1,7 @@
 package by.itstep.internetMarket.dao;
 
-import by.itstep.internetMarket.entity.*;
+
+import by.itstep.internetMarket.dao.entity.*;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;

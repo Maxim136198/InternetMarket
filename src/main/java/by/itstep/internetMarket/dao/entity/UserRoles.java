@@ -1,4 +1,4 @@
-package by.itstep.internetMarket.entity;
+package by.itstep.internetMarket.dao.entity;
 
 
 import javax.persistence.*;

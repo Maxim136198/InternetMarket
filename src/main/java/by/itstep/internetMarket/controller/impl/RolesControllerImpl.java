@@ -1,42 +1,38 @@
 package by.itstep.internetMarket.controller.impl;
 
 import by.itstep.internetMarket.controller.RolesController;
+import by.itstep.internetMarket.dao.entity.Roles;
 import by.itstep.internetMarket.service.RolesService;
-import by.itstep.internetMarket.service.ServiceFactory;
 
-import javax.management.relation.Role;
 import java.util.List;
 
 public class RolesControllerImpl implements RolesController {
 
     private RolesService rolesService;
 
-    public RolesControllerImpl(){
-        this.rolesService = ServiceFactory.getInstance().getRolesService();
+
+    @Override
+    public void addRoles(Roles roles) {
+        rolesService.addRoles(roles);
     }
 
     @Override
-    public void addRole(Role role) {
-
+    public void removeRoles(Long id) {
+        rolesService.removeRoles(id);
     }
 
     @Override
-    public void removeRole(int id) {
-
-    }
-
-    @Override
-    public void updateRole(Role role) {
-
+    public void updateRoles(Roles roles) {
+rolesService.updateRoles(roles);
     }
 
     @Override
     public List listRoles() {
-        return null;
+        return rolesService.listRoles();
     }
 
     @Override
-    public Role getRole(String name) {
-        return null;
+    public Roles getRoles(String name) {
+        return rolesService.getRoles(name);
     }
 }

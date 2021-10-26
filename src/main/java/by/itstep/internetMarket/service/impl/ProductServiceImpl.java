@@ -1,40 +1,50 @@
 package by.itstep.internetMarket.service.impl;
 
-import by.itstep.internetMarket.dao.ProductDao;
-import by.itstep.internetMarket.entity.Product;
+import by.itstep.internetMarket.dao.entity.Order;
+import by.itstep.internetMarket.dao.repository.ProductRepository;
+import by.itstep.internetMarket.dao.entity.Product;
 import by.itstep.internetMarket.service.ProductService;
 
 import java.util.List;
 
 public class ProductServiceImpl implements ProductService {
-    ProductDao productDao;
 
-    public ProductServiceImpl() {
-        this.productDao = DaoFactory.getInstance().getProductDao();
-    }
+    private ProductRepository productRepository;
 
     @Override
     public void addProduct(Product product) {
-        productDao.addProduct(product);
+        if (product != null) {
+            List<Product> products = productRepository.findAll();
+            if (!products.isEmpty()) {
+                Product lastProduct = products.get(products.size() - 1);
+                product.setId(lastProduct.getId() + 1);
+                productRepository.save(product);
+            }
+        }
     }
 
     @Override
-    public void removeProduct(int id) {
-        productDao.removeProduct(id);
+    public void removeProduct(Long id) {
+        if(id!=null) {
+            productRepository.deleteById(id);
+        }
     }
 
     @Override
     public void updateProduct(Product product) {
-        productDao.updateProduct(product);
+        productRepository.saveAndFlush(product);
     }
 
     @Override
     public List<Product> listProducts() {
-        return productDao.listProducts();
+        return productRepository.findAll();
     }
 
     @Override
     public Product getProduct(String name) {
-        return productDao.getProduct(name);
+        if(name!=null){
+            return productRepository.findByName(name);
+        }
+        return null;
     }
 }

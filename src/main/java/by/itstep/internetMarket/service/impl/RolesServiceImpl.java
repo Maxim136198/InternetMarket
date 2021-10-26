@@ -1,38 +1,38 @@
 package by.itstep.internetMarket.service.impl;
 
-import by.itstep.internetMarket.dao.RolesRepository;
+import by.itstep.internetMarket.dao.repository.RolesRepository;
+import by.itstep.internetMarket.dao.entity.Roles;
 import by.itstep.internetMarket.service.RolesService;
 
-import javax.management.relation.Role;
 import java.util.List;
 
 public class RolesServiceImpl implements RolesService {
-    private RolesRepository roleDao;
+    private RolesRepository rolesRepository;
 
 
 
     @Override
-    public void addRole(Role role) {
-
+    public void addRoles(Roles roles) {
+        rolesRepository.save(roles);
     }
 
     @Override
-    public void removeRole(int id) {
-
+    public void removeRoles(Long id) {
+        rolesRepository.deleteById(id);
     }
 
     @Override
-    public void updateRole(Role role) {
-
+    public void updateRoles(Roles roles) {
+rolesRepository.saveAndFlush(roles);
     }
 
     @Override
     public List listRoles() {
-        return null;
+        return rolesRepository.findAll();
     }
 
     @Override
-    public Role getRole(String name) {
-        return null;
+    public Roles getRoles(String name) {
+        return rolesRepository.findByName(name);
     }
 }

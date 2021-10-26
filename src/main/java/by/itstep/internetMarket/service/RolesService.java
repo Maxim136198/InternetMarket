@@ -1,16 +1,17 @@
 package by.itstep.internetMarket.service;
 
-import javax.management.relation.Role;
+import by.itstep.internetMarket.dao.entity.Roles;
+
 import java.util.List;
 
 public interface RolesService {
-    void addRole(Role role);
+    void addRoles(Roles roles);
 
-    void removeRole(int id);
+    void removeRoles(Long id);
 
-    void updateRole(Role role);
+    void updateRoles(Roles roles);
 
     List listRoles();
 
-    Role getRole(String name);
+    Roles getRoles(String name);
 }

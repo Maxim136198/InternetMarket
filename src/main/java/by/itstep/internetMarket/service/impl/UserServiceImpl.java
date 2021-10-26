@@ -1,7 +1,7 @@
 package by.itstep.internetMarket.service.impl;
 
-import by.itstep.internetMarket.dao.UserRepository;
-import by.itstep.internetMarket.entity.User;
+import by.itstep.internetMarket.dao.repository.UserRepository;
+import by.itstep.internetMarket.dao.entity.User;
 import by.itstep.internetMarket.service.UserService;
 
 import java.util.List;
