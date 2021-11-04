@@ -26,6 +26,7 @@ public class User {
     private Set<Roles> roleId;
 
     @OneToMany(mappedBy = "order")
+    @Column(name = "order")
     private List<Order> orders;
 
     @Override

@@ -3,12 +3,14 @@ package by.itstep.internetMarket.service.impl;
 import by.itstep.internetMarket.dao.repository.RolesRepository;
 import by.itstep.internetMarket.dao.entity.Roles;
 import by.itstep.internetMarket.service.RolesService;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
 public class RolesServiceImpl implements RolesService {
-    private RolesRepository rolesRepository;
 
+    @Autowired
+    private RolesRepository rolesRepository;
 
 
     @Override
@@ -17,7 +19,7 @@ public class RolesServiceImpl implements RolesService {
     }
 
     @Override
-    public void removeRoles(Long id) {
+    public void removeRolesById(Long id) {
         rolesRepository.deleteById(id);
     }
 
@@ -27,7 +29,7 @@ rolesRepository.saveAndFlush(roles);
     }
 
     @Override
-    public List listRoles() {
+    public List<Roles> listRoles() {
         return rolesRepository.findAll();
     }
 

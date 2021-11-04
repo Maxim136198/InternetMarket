@@ -3,11 +3,13 @@ package by.itstep.internetMarket.service.impl;
 import by.itstep.internetMarket.dao.repository.UserRepository;
 import by.itstep.internetMarket.dao.entity.User;
 import by.itstep.internetMarket.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
 public class UserServiceImpl implements UserService {
 
+    @Autowired
     private UserRepository userRepository;
 
 
@@ -17,17 +19,17 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void deleteUser(Long id) {
+    public void deleteUserById(Long id) {
         userRepository.deleteById(id);
     }
 
     @Override
-    public void updateUser(User user) {
-        userRepository.saveAndFlush(user);
+    public User updateUser(User user) {
+        return userRepository.saveAndFlush(user);
     }
 
     @Override
-    public List listUsers() {
+    public List<User> listUsers() {
         return userRepository.findAll();
     }
 

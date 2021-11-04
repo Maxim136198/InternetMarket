@@ -23,7 +23,7 @@ public class Item {
     @JoinColumn(name = "product_id", referencedColumnName = "id")
     private Product productId;
 
-
+    @Column(name = "count")
     private int count;
 
 

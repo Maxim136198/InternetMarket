@@ -4,11 +4,13 @@ import by.itstep.internetMarket.dao.entity.Order;
 import by.itstep.internetMarket.dao.repository.ProductRepository;
 import by.itstep.internetMarket.dao.entity.Product;
 import by.itstep.internetMarket.service.ProductService;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
 public class ProductServiceImpl implements ProductService {
 
+    @Autowired
     private ProductRepository productRepository;
 
     @Override

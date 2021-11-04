@@ -11,7 +11,7 @@ public class Roles {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @JoinColumn(name = "role_name")
+    @Column(name = "role_name")
     private String roleName;
 
     @Override

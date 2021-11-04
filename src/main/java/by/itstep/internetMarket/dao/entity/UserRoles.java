@@ -8,15 +8,20 @@ import java.util.Objects;
 @Table(name = "user_roles")
 public class UserRoles {
 
-    @Id
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private int userId;
 
-    @Id
+    @EmbeddedId
+    private UserRolesId id = new UserRolesId();
+
     @ManyToOne
+    @MapsId("userId")
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private User userId;
+
+
+    @ManyToOne
+    @MapsId("roleId")
     @JoinColumn(name = "role_id")
-    private int roleId;
+    private Roles roleId;
 
     @Override
     public String toString() {
@@ -40,19 +45,27 @@ public class UserRoles {
         return Objects.hash(userId, roleId);
     }
 
-    public int getUserId() {
+    public UserRolesId getId() {
+        return id;
+    }
+
+    public void setId(UserRolesId id) {
+        this.id = id;
+    }
+
+    public User getUserId() {
         return userId;
     }
 
-    public void setUserId(int userId) {
+    public void setUserId(User userId) {
         this.userId = userId;
     }
 
-    public int getRoleId() {
+    public Roles getRoleId() {
         return roleId;
     }
 
-    public void setRoleId(int roleId) {
+    public void setRoleId(Roles roleId) {
         this.roleId = roleId;
     }
 }

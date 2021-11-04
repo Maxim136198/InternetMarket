@@ -7,11 +7,11 @@ import java.util.List;
 public interface RolesService {
     void addRoles(Roles roles);
 
-    void removeRoles(Long id);
+    void removeRolesById(Long id);
 
     void updateRoles(Roles roles);
 
-    List listRoles();
+    List<Roles> listRoles();
 
     Roles getRoles(String name);
 }

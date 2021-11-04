@@ -3,12 +3,14 @@ package by.itstep.internetMarket.service.impl;
 import by.itstep.internetMarket.dao.repository.OrderRepository;
 import by.itstep.internetMarket.dao.entity.Order;
 import by.itstep.internetMarket.service.OrderService;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 import java.util.Optional;
 
 public class OrderServiceImpl implements OrderService {
 
+    @Autowired
     private OrderRepository orderRepository;
 
 
