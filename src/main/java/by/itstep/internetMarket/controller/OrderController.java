@@ -15,5 +15,5 @@ public interface OrderController {
 
     List<Order> listOrders();
 
-    Optional<Order> getOrder(Long id);
+    Order getOrder(Long id);
 }

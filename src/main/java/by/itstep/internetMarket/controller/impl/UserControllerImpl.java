@@ -11,6 +11,10 @@ public class UserControllerImpl implements UserController {
     private UserService userService;
 
 
+//    public FrontUser addUser(FrontUser fUser){
+//        service.addUser(fUser);
+//    }
+
 
     @Override
     public void addUser(User user) {

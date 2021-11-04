@@ -5,13 +5,17 @@ import by.itstep.internetMarket.dao.entity.Roles;
 import java.util.List;
 
 public interface RolesService {
-    void addRoles(Roles roles);
+    Roles save(Roles roles);
 
-    void removeRolesById(Long id);
+    void delete(Roles roles);
 
-    void updateRoles(Roles roles);
+    void deleteById(Long id);
 
-    List<Roles> listRoles();
+    Roles updateRoles(Roles roles);
 
-    Roles getRoles(String name);
+    List<Roles> findAll();
+
+    Roles findById(Long id);
+
+    Roles findByName(String name);
 }

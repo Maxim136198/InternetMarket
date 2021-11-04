@@ -5,6 +5,7 @@ import by.itstep.internetMarket.dao.entity.Order;
 import by.itstep.internetMarket.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -15,7 +16,7 @@ public class OrderServiceImpl implements OrderService {
 
 
     @Override
-    public void addOrder(Order order) {
+    public Order save(Order order) {
         if (order != null) {
             List<Order> orders = orderRepository.findAll();
             if (!orders.isEmpty()) {
@@ -24,30 +25,40 @@ public class OrderServiceImpl implements OrderService {
                 orderRepository.save(order);
             }
         }
+        return null; // TODO
     }
 
     @Override
-    public void removeOrder(Long id) {
+    public void deleteById(Long id) {
         if (id != null) {
             orderRepository.deleteById(id);
         }
     }
 
     @Override
-    public void updateOrder(Order order) {
-        orderRepository.saveAndFlush(order);
+    public void deleteByDateOfPurchases(LocalDateTime dateOfPurchases) {
+        if (dateOfPurchases != null){
+            orderRepository.deleteByDateOfPurchases(dateOfPurchases);
+        }
+
     }
 
     @Override
-    public List<Order> listOrders() {
+    public Order updateOrder(Order order) {
+        return orderRepository.saveAndFlush(order);
+    }
+
+    @Override
+    public List<Order> findAll() {
         return orderRepository.findAll();
     }
 
     @Override
-    public Optional<Order> getOrder(Long id) {
+    public Order findById(Long id) {
         if (id != null) {
-            return orderRepository.findAll(id);
+            orderRepository.findById(id);
         }
-        return null;
+        return orderRepository.findById(id).orElseThrow(() -> new RuntimeException("order not found"));
     }
+
 }

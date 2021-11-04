@@ -14,12 +14,12 @@ public class OrderControllerImpl implements OrderController {
 
     @Override
     public void addOrder(Order order) {
-        orderService.addOrder(order);
+        orderService.save(order);
     }
 
     @Override
     public void removeOrder(Long id) {
-        orderService.removeOrder(id);
+        orderService.deleteById(id);
     }
 
     @Override
@@ -29,7 +29,7 @@ public class OrderControllerImpl implements OrderController {
 
     @Override
     public List<Order> listOrders() {
-        return orderService.listOrders();
+        return orderService.findAll();
     }
 
     @Override

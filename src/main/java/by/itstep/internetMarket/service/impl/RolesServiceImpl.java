@@ -12,29 +12,46 @@ public class RolesServiceImpl implements RolesService {
     @Autowired
     private RolesRepository rolesRepository;
 
-
-    @Override
-    public void addRoles(Roles roles) {
-        rolesRepository.save(roles);
+    public RolesServiceImpl(RolesRepository rolesRepository) {
+        this.rolesRepository = rolesRepository;
     }
 
     @Override
-    public void removeRolesById(Long id) {
+    public Roles save(Roles roles) {
+        return rolesRepository.save(roles);
+    }
+
+    @Override
+    public void delete(Roles roles) {
+        rolesRepository.delete(roles);
+    }
+
+    @Override
+    public void deleteById(Long id) {
         rolesRepository.deleteById(id);
     }
 
     @Override
-    public void updateRoles(Roles roles) {
-rolesRepository.saveAndFlush(roles);
+    public Roles updateRoles(Roles roles) {
+return rolesRepository.saveAndFlush(roles);
     }
 
     @Override
-    public List<Roles> listRoles() {
+    public List<Roles> findAll() {
         return rolesRepository.findAll();
     }
 
     @Override
-    public Roles getRoles(String name) {
+    public Roles findById(Long id) {
+        return rolesRepository.findById(id).orElseThrow(() -> new RuntimeException("roles not found"));
+    }
+
+    @Override
+    public Roles findByName(String name) {
         return rolesRepository.findByName(name);
     }
+
+
+
+
 }

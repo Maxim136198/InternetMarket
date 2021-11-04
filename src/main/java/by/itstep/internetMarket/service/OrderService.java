@@ -2,17 +2,21 @@ package by.itstep.internetMarket.service;
 
 import by.itstep.internetMarket.dao.entity.Order;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
 public interface OrderService {
-    void addOrder(Order order);
+    Order save(Order order);
 
-    void removeOrder(Long id);
+    void deleteById(Long id);
 
-    void updateOrder(Order order);
+    void deleteByDateOfPurchases(LocalDateTime dateOfPurchases);
 
-    List<Order> listOrders();
+    Order updateOrder(Order order);
 
-    Optional<Order> getOrder(Long id);
+    List<Order> findAll();
+
+    Order findById(Long id);
+
 }

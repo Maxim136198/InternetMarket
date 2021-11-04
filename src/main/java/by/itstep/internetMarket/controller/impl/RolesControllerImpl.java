@@ -4,21 +4,23 @@ import by.itstep.internetMarket.controller.RolesController;
 import by.itstep.internetMarket.dao.entity.Roles;
 import by.itstep.internetMarket.service.RolesService;
 
+
 import java.util.List;
 
 public class RolesControllerImpl implements RolesController {
+
 
     private RolesService rolesService;
 
 
     @Override
     public void addRoles(Roles roles) {
-        rolesService.addRoles(roles);
+        rolesService.save(roles);
     }
 
     @Override
     public void removeRoles(Long id) {
-        rolesService.removeRoles(id);
+        rolesService.deleteById(id);
     }
 
     @Override
@@ -28,11 +30,11 @@ rolesService.updateRoles(roles);
 
     @Override
     public List listRoles() {
-        return rolesService.listRoles();
+        return rolesService.findAll();
     }
 
     @Override
     public Roles getRoles(String name) {
-        return rolesService.getRoles(name);
+        return rolesService.findByName(name);
     }
 }

@@ -4,14 +4,19 @@ import by.itstep.internetMarket.dao.entity.User;
 
 import java.util.List;
 
+
 public interface UserService {
-    void createUser(User user);
+    User save(User user);
+
+    void deleteUser(User user);
 
     void deleteUserById(Long id);
 
     User updateUser(User user);
 
-    List<User> listUsers();
+    List<User> findAll();
+
+    User findById(Long id);
 
     User getUser(String name);
 
