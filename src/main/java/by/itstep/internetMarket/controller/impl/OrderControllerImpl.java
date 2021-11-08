@@ -5,7 +5,6 @@ import by.itstep.internetMarket.dao.entity.Order;
 import by.itstep.internetMarket.service.OrderService;
 
 import java.util.List;
-import java.util.Optional;
 
 public class OrderControllerImpl implements OrderController {
 
@@ -33,7 +32,7 @@ public class OrderControllerImpl implements OrderController {
     }
 
     @Override
-    public Optional<Order> getOrder(Long id) {
-        return orderService.getOrder(id);
+    public Order getOrder(Long id) {
+        return null;
     }
 }

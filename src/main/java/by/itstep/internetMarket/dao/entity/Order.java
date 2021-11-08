@@ -12,7 +12,7 @@ public class Order {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private Long id;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
@@ -44,8 +44,8 @@ public class Order {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Order order = (Order) o;
-        return id == order.id &&
-                userId == order.userId &&
+        return id.equals(order.id) &&
+                userId.equals(order.userId) &&
                 dateOfPurchases.equals(order.dateOfPurchases) &&
                 purchasePrice.equals(order.purchasePrice) &&
                 user.equals(order.user);
@@ -56,11 +56,11 @@ public class Order {
         return Objects.hash(id, userId, dateOfPurchases, purchasePrice, user);
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

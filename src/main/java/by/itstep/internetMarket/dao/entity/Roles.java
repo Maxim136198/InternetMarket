@@ -1,6 +1,7 @@
 package by.itstep.internetMarket.dao.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.util.Objects;
 
 @Entity
@@ -9,9 +10,10 @@ public class Roles {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private Long id;
 
-    @Column(name = "role_name")
+    @Column(name = "role_name", unique = true, nullable = false)
+    @Size(min = 3, max = 50)
     private String roleName;
 
     @Override
@@ -22,25 +24,26 @@ public class Roles {
                 '}';
     }
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Roles roles = (Roles) o;
-        return id == roles.id &&
+        return id.equals(roles.id) &&
                 roleName.equals(roles.roleName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(roleName);
+        return Objects.hash(id, roleName);
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

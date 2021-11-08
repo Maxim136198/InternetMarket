@@ -12,12 +12,12 @@ public class ProductControllerImpl implements ProductController {
 
     @Override
     public void addProduct(Product product) {
-        productService.addProduct(product);
+        productService.save(product);
     }
 
     @Override
     public void removeProduct(Long id) {
-productService.removeProduct(id);
+productService.deleteById(id);
     }
 
     @Override
@@ -27,11 +27,11 @@ productService.updateProduct(product);
 
     @Override
     public List<Product> listProduct() {
-        return productService.listProducts();
+        return productService.findAll();
     }
 
     @Override
     public Product getProduct(String name) {
-        return productService.getProduct(name);
+        return productService.findByName(name);
     }
 }

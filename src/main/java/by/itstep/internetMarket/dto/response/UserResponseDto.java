@@ -6,7 +6,7 @@ import by.itstep.internetMarket.dto.RolesDto;
 import java.util.Set;
 
 
-public class UserRespenseDto {
+public class UserResponseDto {
 
     private Long id;
 

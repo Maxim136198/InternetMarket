@@ -3,9 +3,12 @@ package by.itstep.internetMarket.controller.impl;
 import by.itstep.internetMarket.controller.UserController;
 import by.itstep.internetMarket.dao.entity.User;
 import by.itstep.internetMarket.service.UserService;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+@RestController
 public class UserControllerImpl implements UserController {
 
     private UserService userService;
@@ -36,6 +39,8 @@ public class UserControllerImpl implements UserController {
         return null;
     }
 
+
+    @GetMapping(value = "/get")
     @Override
     public User getUser(String name) {
         return null;

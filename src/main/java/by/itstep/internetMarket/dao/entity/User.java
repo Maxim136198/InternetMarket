@@ -3,6 +3,7 @@ package by.itstep.internetMarket.dao.entity;
 
 import javax.management.relation.Role;
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
@@ -13,12 +14,14 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private Long id;
 
-    @Column(name = "name")
+    @Column(name = "name", unique = true, nullable = false)
+    @Size(min = 3, max = 50)
     private String name;
 
-    @Column(name = "password")
+    @Column(name = "password", unique = true, nullable = false)
+    @Size(min = 6, max = 50)
     private String password;
 
     @ManyToMany
@@ -40,15 +43,16 @@ public class User {
                 '}';
     }
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return id == user.id &&
-                roleId == user.roleId &&
+        return id.equals(user.id) &&
                 name.equals(user.name) &&
                 password.equals(user.password) &&
+                roleId.equals(user.roleId) &&
                 orders.equals(user.orders);
     }
 
@@ -60,7 +64,8 @@ public class User {
     public User() {
     }
 
-    public User(int id, String name, String password, Set<Roles> roleId, List<Order> orders) {
+
+    public User(Long id, @Size(min = 3, max = 50) String name, @Size(min = 6, max = 50) String password, Set<Roles> roleId, List<Order> orders) {
         this.id = id;
         this.name = name;
         this.password = password;
@@ -68,11 +73,11 @@ public class User {
         this.orders = orders;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

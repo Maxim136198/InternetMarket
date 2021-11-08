@@ -18,6 +18,6 @@ public interface UserService {
 
     User findById(Long id);
 
-    User getUser(String name);
+    User findByName(String name);
 
 }

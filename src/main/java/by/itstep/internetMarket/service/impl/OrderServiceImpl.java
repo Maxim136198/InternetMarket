@@ -1,5 +1,6 @@
 package by.itstep.internetMarket.service.impl;
 
+
 import by.itstep.internetMarket.dao.repository.OrderRepository;
 import by.itstep.internetMarket.dao.entity.Order;
 import by.itstep.internetMarket.service.OrderService;
@@ -7,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Optional;
+
 
 public class OrderServiceImpl implements OrderService {
 
@@ -17,34 +18,28 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public Order save(Order order) {
-        if (order != null) {
-            List<Order> orders = orderRepository.findAll();
-            if (!orders.isEmpty()) {
-                Order lastOrder = orders.get(orders.size() - 1);
-                order.setId(lastOrder.getId() + 1);
-                orderRepository.save(order);
-            }
-        }
-        return null; // TODO
+        validate(order.getId() != 0, "error.order.notHaveId");
+        return orderRepository.saveAndFlush(order);
     }
 
     @Override
     public void deleteById(Long id) {
-        if (id != null) {
-            orderRepository.deleteById(id);
-        }
+        findById(id);
+        orderRepository.deleteById(id);
     }
 
     @Override
     public void deleteByDateOfPurchases(LocalDateTime dateOfPurchases) {
-        if (dateOfPurchases != null){
+        validate(!orderRepository.deleteByDateOfPurchases(dateOfPurchases),"error.order.dateOfPurchases.notUnique" );
             orderRepository.deleteByDateOfPurchases(dateOfPurchases);
-        }
 
     }
 
     @Override
     public Order updateOrder(Order order) {
+        final Long id = order.getId();
+        validate(id == null, "error.order.haveId");
+        findById(id);
         return orderRepository.saveAndFlush(order);
     }
 
@@ -55,10 +50,16 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public Order findById(Long id) {
-        if (id != null) {
-            orderRepository.findById(id);
-        }
+
         return orderRepository.findById(id).orElseThrow(() -> new RuntimeException("order not found"));
+    }
+
+
+
+    private void validate(boolean expression, String errorMessage) {
+        if (expression) {
+            throw new RuntimeException(errorMessage);
+        }
     }
 
 }

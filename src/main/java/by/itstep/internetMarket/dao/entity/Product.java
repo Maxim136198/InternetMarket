@@ -2,6 +2,7 @@ package by.itstep.internetMarket.dao.entity;
 
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.util.Objects;
 
 @Entity
@@ -10,9 +11,10 @@ public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private Long id;
 
     @Column(name = "name")
+    @Size(min = 3, max = 50)
     private String name;
 
     @Column(name = "description")
@@ -31,12 +33,13 @@ public class Product {
                 '}';
     }
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Product product = (Product) o;
-        return id == product.id &&
+        return id.equals(product.id) &&
                 name.equals(product.name) &&
                 description.equals(product.description) &&
                 price.equals(product.price);
@@ -47,11 +50,11 @@ public class Product {
         return Objects.hash(id, name, description, price);
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
